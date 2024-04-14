@@ -6,6 +6,10 @@
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 }
 
+.title {
+  font-size: 40px !important;
+}
+
 .text {
   font-size: 24px;
 }
@@ -19,9 +23,30 @@
   width: 300px;
 }
 
+.buttonContainer {
+  width: 300px;
+}
+
 @media screen and (max-width: 600px) {
   .app {
     width: 300px;
     height: 500px;
+  }
+
+  .title {
+    font-size: 32px !important;
+  }
+
+  .timer {
+    width: 250px;
+  }
+
+  .text {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .buttonContainer {
+    width: 250px;
   }
 }

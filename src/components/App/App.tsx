@@ -17,8 +17,10 @@ const App = () => {
   const [timerRunning, setTimerRunning] = useState<boolean>(false);
 
   const handleSetRemainingTime = (time: Dayjs) => {
-    setTargetTime(time);
-    setFinishTime(startTime.add(time.diff(dayjs().startOf("day"))));
+    if (time) {
+      setTargetTime(time);
+      setFinishTime(startTime.add(time.diff(dayjs().startOf("day"))));
+    }
   };
 
   const handleStartTimer = () => {
@@ -50,8 +52,8 @@ const App = () => {
 
   return (
     <Flex className={styles.app} vertical align="center">
-      <Title level={1}>Work Timer ⏳</Title>
-      <Text className={styles.text}>Осталось: {formatTime(targetTime)}</Text>
+      <Title className={styles.title} level={1}>Work Timer ⏳</Title>
+      {targetTime !== null && <Text className={styles.text}>Осталось: {formatTime(targetTime)}</Text>}
       <Text className={styles.text}>Закончите {formatDate(finishTime)}</Text>
       <TimePicker
         className={styles.timer}
@@ -60,7 +62,7 @@ const App = () => {
         onChange={handleSetRemainingTime}
         placeholder="Выберите время"
       />
-      <Flex style={{ width: "300px" }} gap={10}>
+      <Flex className={styles.buttonContainer} gap={10}>
         <Button block type="primary" onClick={handleStartTimer} disabled={timerRunning}>Start</Button>
         <Button block type="primary" danger onClick={handleStopTimer} disabled={!timerRunning}>Stop</Button>
       </Flex>
