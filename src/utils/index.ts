@@ -1,3 +1,4 @@
 import { formatTime } from "./formatTime";
+import { formatDate } from "./formatDate";
 
-export { formatTime };
+export { formatTime, formatDate };

@@ -5,7 +5,7 @@ import dayjs, { Dayjs } from "dayjs";
 const { Title, Text } = Typography;
 
 import styles from './App.module.css'
-import { formatTime } from "../../utils";
+import { formatDate, formatTime } from "../../utils";
 
 const App = () => {
   const [startTime, setStartTime] = useState<Dayjs>(dayjs());
@@ -50,16 +50,17 @@ const App = () => {
 
   return (
     <Flex className={styles.app} vertical align="center">
-      <Title level={1}>Work Timer</Title>
-      <Text>Осталось: {formatTime(targetTime)}</Text>
-      <Text>Закончите: {finishTime.format("YYYY-MM-DD HH:mm:ss")}</Text>
+      <Title level={1}>Work Timer ⏳</Title>
+      <Text className={styles.text}>Осталось: {formatTime(targetTime)}</Text>
+      <Text className={styles.text}>Закончите {formatDate(finishTime)}</Text>
       <TimePicker
+        className={styles.timer}
         value={targetTime}
         disabled={timerRunning}
         onChange={handleSetRemainingTime}
-        placeholder="Время"
+        placeholder="Выберите время"
       />
-      <Flex gap={10}>
+      <Flex style={{ width: "300px" }} gap={10}>
         <Button block type="primary" onClick={handleStartTimer} disabled={timerRunning}>Start</Button>
         <Button block type="primary" danger onClick={handleStopTimer} disabled={!timerRunning}>Stop</Button>
       </Flex>
