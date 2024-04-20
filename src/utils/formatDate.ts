@@ -16,7 +16,7 @@ const MONTHS = [
 ];
 
 export const formatDate = (date: Dayjs) => {
-  const day = date.daysInMonth();
+  const day = date.date();
   const month = MONTHS[date.month()];
   const hours = date.hour();
   const minutes = date.minute();

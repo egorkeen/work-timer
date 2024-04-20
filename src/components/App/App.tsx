@@ -38,6 +38,8 @@ const App = () => {
   useEffect(() => {
     let intervalId = null;
 
+    console.log(targetTime)
+
     if (timerRunning) {
       intervalId = setInterval(() => {
         setTargetTime(prevTime => prevTime !== null ? prevTime.subtract(1, "second") : prevTime);
